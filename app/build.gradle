@@ -1,0 +1,115 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+    id 'jacoco'
+    id 'pmd'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group 'es2_groupbf'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
+    implementation 'com.opencsv:opencsv:5.7.1'
+    implementation 'com.google.code.gson:gson:2.10.1'
+}
+
+application {
+    mainClass = 'es2_groupbf.App'
+}
+
+jar {
+    manifest {
+        attributes 'Specification-Title': 'Hotel H2U'
+        attributes 'Specification-Version': getArchiveVersion()
+        attributes 'Specification-Vendor': 'ES2_Group_BF'
+        attributes 'Implementation-Title': 'es2_groupbf.App'
+        attributes 'Implementation-Version': 'build-' + getRandomId()
+        attributes 'Implementation-Vendor': 'ES2_Group_BF'
+        attributes 'Main-Class': 'es2_groupbf.App'
+    }
+}
+
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+    testLogging.events("PASSED", "SKIPPED", "FAILED")
+}
+
+jacoco {
+    toolVersion = "0.8.8"
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = false
+        csv.required = false
+        html.required = true
+        html.outputLocation = file("${buildDir}/reports/jacoco-output")
+    }
+}
+
+pmd {
+    consoleOutput = true
+    ignoreFailures = true
+    toolVersion = "6.52.0"
+    rulesMinimumPriority = 5
+    reportsDir = file("${buildDir}/reports/pmd-output")
+    ruleSetFiles = files("${rootDir}/config/pmd/custom-ruleset.xml")
+    ruleSets = []
+}
+
+javadoc {
+    source = sourceSets.main.allJava
+}
+
+tasks.register("compressJacoco", Zip) {
+    from 'build/reports/jacoco-output'
+    archiveName 'jacoco-output-' + getRandomId() + '.zip'
+    destinationDir(file('build/artifacts'))
+    dependsOn(jacocoTestReport)
+}
+
+tasks.register("compressPMD", Zip) {
+    from 'build/reports/pmd-output'
+    archiveName 'pmd-output-' + getRandomId() + '.zip'
+    destinationDir(file('build/artifacts'))
+}
+
+tasks.register("compressTests", Zip) {
+    from 'build/reports/tests/test'
+    archiveName 'tests-output-' + getRandomId() + '.zip'
+    destinationDir(file('build/artifacts'))
+}
+
+tasks.register("compressSource", Zip) {
+    from './'
+    exclude 'build/'
+    exclude '.gradle/'
+    archiveName 'es2-groupbf-' + getRandomId() + '.zip'
+    destinationDir(file('build/artifacts'))
+}
+
+tasks.named('build') {
+    finalizedBy('compressSource', 'compressPMD')
+}
+
+tasks.named('test') {
+    finalizedBy('jacocoTestReport', 'compressJacoco', 'compressTests')
+}
+
+shadowJar {
+    destinationDirectory.set(layout.buildDirectory.dir('artifacts'))
+}
+
+static String getRandomId() {
+    UUID uuid = UUID.randomUUID();
+    return uuid.toString();
+}

@@ -1,0 +1,75 @@
+image: gradle:alpine
+
+stages:
+  - assemble
+  - inspection
+  - test
+  - build
+  - deploy
+
+variables:
+  GIT_SSL_NO_VERIFY: 1
+
+before_script:
+  - echo "Start CI/CD"
+  - GRADLE_USER_HOME="$(pwd)/.gradle"
+  - export GRADLE_USER_HOME
+  - chmod +x ./gradlew
+
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+
+assemble:
+  stage: assemble
+  tags:
+    - docker-runner
+  except:
+    - main
+  script:
+    - chmod +x ./gradlew
+    - ./gradlew --build-cache assemble
+
+inspection:
+  stage: inspection
+  tags:
+    - docker-runner
+  script:
+    - chmod +x ./gradlew
+    - ./gradlew check
+
+test:
+  stage: test
+  tags:
+    - docker-runner
+  needs: [inspection]
+  script:
+    - chmod +x ./gradlew
+    - ./gradlew test
+
+build:
+  stage: build
+  tags:
+    - docker-runner
+  only:
+    - main
+  script:
+    - chmod +x ./gradlew
+    - ./gradlew --build-cache build
+  artifacts:
+    paths:
+      - build/artifacts
+    expire_in: 1 week
+
+deploy:
+  stage: deploy
+  tags:
+    - docker-runner
+  only:
+    - main
+  script:
+    - echo "Deploying..."
+
+after_script:
+  - echo "End CI/CD"

@@ -1,0 +1,9 @@
+ID;Nationality;Age;DaysSinceCreation;NameHash;DocIDHash;AverageLeadTime;LodgingRevenue;OtherRevenue;BookingsCanceled;BookingsNoShowed;BookingsCheckedIn;PersonsNights;RoomNights;DaysSinceLastStay;DaysSinceFirstStay;DistributionChannel;MarketSegment;SRHighFloor;SRLowFloor;SRAccessibleRoom;SRMediumFloor;SRBathtub;SRShower;SRCrib;SRKingSizeBed;SRTwinBed;SRNearElevator;SRAwayFromElevator;SRNoAlcoholInMiniBar;SRQuietRoom;PurchaseDate;PaymentMethod
+1;PRT;30;365;Joao;Joao;120;60;20;0;0;1;2;1;5;365;Travel Agent/Operator;Travel Agent/Operator;0;0;0;0;0;0;0;0;0;0;0;0;0;05/01/23;3
+2;PRT;18;1460;Pedro;Pedro;30;2190;120;1;0;7;2;1;10;1460;Travel Agent/Operator;Travel Agent/Operator;0;0;0;0;0;0;0;0;0;0;0;0;0;31/12/22;1
+3;PRT;40;31;Marco;Marco;60;200;0;0;0;1;2;1;2;31;Corporate;Corporate;0;0;0;0;0;0;0;0;0;0;0;0;0;08/01/23;2
+4;PRT;60;248;Joaquim;Joaquim;220;340;180;1;0;2;2;1;40;248;Travel Agent/Operator;Travel Agent/Operator;0;0;0;0;0;0;0;0;0;0;0;0;0;30/11/22;4
+5;PRT;22;60;Rita;Rita;15;220;20;0;0;1;2;1;52;60;Travel Agent/Operator;Travel Agent/Operator;0;0;0;0;0;0;0;0;0;0;0;0;0;29/10/22;1
+6;PRT;20;4;Francisco;Francisco;80;100;60;0;0;1;2;1;1;4;Corporate;Corporate;0;0;0;0;0;0;0;0;0;0;0;0;0;09/01/23;1
+7;PRT;80;0;Manuel;Manuel;0;0;0;0;0;0;0;0;0;0;Corporate;Corporate;0;0;0;0;0;0;0;0;0;0;0;0;0;NULL;0
+7;PRT;80;0;Manuel;Manuel;0;0;0;0;0;0;0;0;0;0;Corporate;Corporate;0;0;0;0;0;0;0;0;0;0;0;0;0;NULL;0
