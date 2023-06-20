@@ -4,16 +4,13 @@ This is an evaluation project of the ESII curricular unit.
 
 ### Description
 
-O Hotel H2U, no decorrer de 3 anos de atividade, detém uma vasta informação sobre o comportamento
-dos seus clientes no que diz respeito às práticas de aquisição de serviços, bem como informação
-geógráfica e demográfica.
+Hotel H2U, over the course of 3 years of activity, has extensive information on the behavior of its customers with regard to service acquisition practices, as well as geographic and demographic information.
 
-O gestor do Hotel (H2U) gostaria de compreender melhor os diferentes perfis dos seus clientes de modo
-a desenvolver estratégias de marketing mais eficientes e direcionas, nomeadamente:
+The Hotel manager (H2U) would like to better understand the different profiles of its customers in order to develop more efficient and targeted marketing strategies, namely:
 
- - Quem são os melhores clientes
- - Quem são os clientes mais leais
- - Quem são os clientes que deverá reter ou quais os clientes a que deverá dar mais ou menos atenção
+- Who are the best customers
+- Who are the most loyal customers
+- Who are the customers you should retain or which customers you should pay more or less attention to
 
 ## Technologies
 
