@@ -2,7 +2,7 @@
 
 This is an evaluation project of the ESII curricular unit.
 
-### Description
+## Description
 
 Hotel H2U, over the course of 3 years of activity, has extensive information on the behavior of its customers with regard to service acquisition practices, as well as geographic and demographic information.
 
